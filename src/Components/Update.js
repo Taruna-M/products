@@ -20,7 +20,7 @@ const UpdateProduct = () => {
 
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/getProds/${id}`);
+        const response = await axios.get(`https://products-api-production-f11a.up.railway.app/getProds/${id}`);
         setFormData(response.data);
       } catch (err) {
         console.error(err);
@@ -48,7 +48,7 @@ const UpdateProduct = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/updateProd/${id}`, updatedData, {
+      const response = await axios.put(`https://products-api-production-f11a.up.railway.app/updateProd/${id}`, updatedData, {
         headers: {
           Authorization: `Bearer ${token}`, 
         },

@@ -17,7 +17,7 @@ const ProductList = () => {
     
     const fetchProducts = async () => {
         try {
-            const response = await axios.get('https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/getProds');
+            const response = await axios.get('https://products-api-production-f11a.up.railway.app/getProds');
             setProducts(response.data);
         } catch (err) {
             console.error(err);
@@ -27,7 +27,7 @@ const ProductList = () => {
     const deleteProduct = async (id) => {
         try {
             const token = localStorage.getItem('token');
-            await axios.delete(`https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/deleteProd/${id}`, {
+            await axios.delete(`https://products-api-production-f11a.up.railway.app/deleteProd/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`, 
                 },
@@ -41,7 +41,7 @@ const ProductList = () => {
     
     const fetchFeaturedProducts = async () => {
         try {
-            const response = await axios.get('https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/getFeaturedProd');
+            const response = await axios.get('https://products-api-production-f11a.up.railway.app/getFeaturedProd');
             setProducts(response.data);
         } catch (err) {
             console.error(err);
@@ -51,7 +51,7 @@ const ProductList = () => {
     
     const fetchProductsByPrice = async (price) => {
         try {
-            const response = await axios.get(`https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/getByPrice/${price}`);
+            const response = await axios.get(`https://products-api-production-f11a.up.railway.app/getByPrice/${price}`);
             console.log(response.data)
             setProducts(response.data);
         } catch (err) {
@@ -62,7 +62,7 @@ const ProductList = () => {
     
     const fetchProductsByRating = async (rating) => {
         try {
-            const response = await axios.get(`https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/getByRating/${rating}`);
+            const response = await axios.get(`https://products-api-production-f11a.up.railway.app/getByRating/${rating}`);
             console.log(response.data)
             setProducts(response.data);
         } catch (err) {
