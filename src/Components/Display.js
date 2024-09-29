@@ -144,7 +144,7 @@ const ProductList = () => {
             <ul>
                 {products.map((product) => (
                     <li key={product._id}>
-                        {product.Name} - ${product.Price} - Rating: {product.Rating} - {product.Featured ? 'Featured' : 'Not Featured'}
+                        {product.Name} - ${product.Price} - Rating: {product.Rating} - {product.Featured ? 'Featured' : 'Not Featured'} - Company: {product.Company}
                         <div>
                             <button onClick={() => deleteProduct(product._id)}>Delete</button>
                             <button onClick={() => navigate(`/update/${email}/${product._id}`)}>Update</button>
