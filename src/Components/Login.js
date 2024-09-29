@@ -14,6 +14,7 @@ const Login = () => {
           const response = await axios.post('https://products-api-production-f11a.up.railway.app/login', { email, password });
           sessionStorage.setItem('token', response.data.token);
           sessionStorage.setItem('userEmail', email);
+          alert('Welcome User')
           navigate(`/products/${email}`);
         } catch (err) {
           if (err.response && err.response.data.error) {

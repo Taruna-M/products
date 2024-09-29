@@ -11,6 +11,7 @@ const Signup = () => {
         e.preventDefault();
         try {
             await axios.post('https://products-api-production-f11a.up.railway.app/signUp', { email, password });
+            alert("Successful Registration");
             navigate('/');
         } catch (err) {
             console.error(err);
