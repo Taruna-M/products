@@ -40,6 +40,7 @@ const ProductList = () => {
                 },
             });
             alert('Product Deleted');
+            
             fetchProducts(); 
         } catch (err) {
             console.error(err);
