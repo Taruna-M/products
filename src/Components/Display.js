@@ -39,6 +39,7 @@ const ProductList = () => {
                     Authorization: `Bearer ${token}`, 
                 },
             });
+            alert('Product Deleted');
             fetchProducts(); 
         } catch (err) {
             console.error(err);

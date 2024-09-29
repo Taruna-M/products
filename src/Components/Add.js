@@ -40,6 +40,7 @@ const AddProduct = () => {
             Authorization: `Bearer ${token}`, 
           },
         });
+        alert('Product Added');
         console.log(response.data);
       } catch (err) {
         console.error(err);

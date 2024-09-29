@@ -59,6 +59,7 @@ const UpdateProduct = () => {
           Authorization: `Bearer ${token}`, 
         },
       });
+      alerr('Updated Product');
       console.log(response.data);
     } catch (err) {
       console.error(err);
