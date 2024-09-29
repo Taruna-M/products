@@ -10,7 +10,7 @@ const Signup = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('products-api-production-f11a.up.railway.app/signUp', { email, password });
+            await axios.post('https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/signUp', { email, password });
             navigate('/');
         } catch (err) {
             console.error(err);

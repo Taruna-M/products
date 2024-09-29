@@ -25,7 +25,7 @@ const AddProduct = () => {
       e.preventDefault();
       try {
         const token = localStorage.getItem('token'); 
-        const response = await axios.post('products-api-production-f11a.up.railway.app/addProd', formData, {
+        const response = await axios.post('https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/addProd', formData, {
           headers: {
             Authorization: `Bearer ${token}`, 
           },

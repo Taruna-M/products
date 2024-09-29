@@ -11,7 +11,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-          const response = await axios.post('products-api-production-f11a.up.railway.app/login', { email, password });
+          const response = await axios.post('https://products-chi-blue.vercel.app/products-api-production-f11a.up.railway.app/login', { email, password });
           localStorage.setItem('token', response.data.token);
           navigate('/products');
         } catch (err) {
