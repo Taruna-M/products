@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 
 const UpdateProduct = () => {
     const navigate = useNavigate();
-    const { id } = useParams();
+    const { email,id } = useParams();
     const [formData, setFormData] = useState({
       Prod_ID: '',
       Name: '',
@@ -15,8 +15,14 @@ const UpdateProduct = () => {
     });
 
     useEffect(() => {
-      fetchProduct();
-    }, []);
+        const token = sessionStorage.getItem('token');
+        const storedEmail = sessionStorage.getItem('userEmail');
+        if (!token || email !== storedEmail){
+            navigate('/');
+            return;
+        }
+        fetchProduct();
+    }, [email,navigate]);
 
     const fetchProduct = async () => {
       try {
@@ -122,7 +128,7 @@ const UpdateProduct = () => {
       </label>
       <button type="submit">Update Product</button>
     </form>
-    <button onClick={() => navigate('/products')}>Return To Products</button>
+    <button onClick={() => navigate(`/products/${email}`)}>Return To Products</button>
     </div>
   );
 };

@@ -12,8 +12,9 @@ const Login = () => {
         e.preventDefault();
         try {
           const response = await axios.post('https://products-api-production-f11a.up.railway.app/login', { email, password });
-          localStorage.setItem('token', response.data.token);
-          navigate('/products');
+          sessionStorage.setItem('token', response.data.token);
+          sessionStorage.setItem('userEmail', email);
+          navigate(`/products/${email}`);
         } catch (err) {
           if (err.response && err.response.data.error) {
             alert(err.response.data.error); 

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './add.css'; 
 
 const AddProduct = () => {
     const navigate = useNavigate();
+    const {email} = useParams();
     const [formData, setFormData] = useState({
       Prod_ID: '',
       Name: '',
@@ -13,6 +14,15 @@ const AddProduct = () => {
       Rating: 0.0,
       Company: '',
     });
+
+    useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        const storedEmail = sessionStorage.getItem('userEmail');
+        if (!token || email !== storedEmail){
+            navigate('/');
+            return;
+        }
+    }, [email,navigate]);
 
     const handleChange = (e) => {
       setFormData({
@@ -51,7 +61,7 @@ const AddProduct = () => {
         </label>
         <button type="submit">Add Product</button>
       </form>
-      <button onClick={() => navigate('/products')}>Return To Products</button>
+      <button onClick={() => navigate(`/products/${email}`)}>Return To Products</button>
     </div>
   );
 };

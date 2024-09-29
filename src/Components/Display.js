@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './display.css';  
 
 const ProductList = () => {
     const navigate = useNavigate();
+    const { email } = useParams();
     const [products, setProducts] = useState([]);
     const [maxPrice, setMaxPrice] = useState(0);
     const [minRating, setMinRating] = useState(0);
     const [showFeatured, setShowFeatured] = useState(false);
 
     useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        const storedEmail = sessionStorage.getItem('userEmail');
+        if (!token || email !== storedEmail){
+            navigate('/');
+            return;
+        }
         fetchProducts();  
-    }, []);
+    }, [email,navigate]);
 
     
     const fetchProducts = async () => {
@@ -26,7 +33,7 @@ const ProductList = () => {
 
     const deleteProduct = async (id) => {
         try {
-            const token = localStorage.getItem('token');
+            const token = sessionStorage.getItem('token');
             await axios.delete(`https://products-api-production-f11a.up.railway.app/deleteProd/${id}`, {
                 headers: {
                     Authorization: `Bearer ${token}`, 
@@ -140,12 +147,12 @@ const ProductList = () => {
                         {product.Name} - ${product.Price} - Rating: {product.Rating} - {product.Featured ? 'Featured' : 'Not Featured'}
                         <div>
                             <button onClick={() => deleteProduct(product._id)}>Delete</button>
-                            <button onClick={() => navigate(`/update/${product._id}`)}>Update</button>
+                            <button onClick={() => navigate(`/update/${email}/${product._id}`)}>Update</button>
                         </div>
                     </li>
                 ))}
             </ul>
-            <button onClick={() => navigate('/add')}>Add Product</button>
+            <button onClick={() => navigate(`/add/${email}`)}>Add Product</button>
         </div>
     );
 };
