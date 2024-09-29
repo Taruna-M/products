@@ -15,7 +15,7 @@ const ProductList = () => {
         const token = sessionStorage.getItem('token');
         const storedEmail = sessionStorage.getItem('userEmail');
         if (!token || email !== storedEmail){
-            navigate('/');
+            navigate('*');
             return;
         }
         fetchProducts();  
