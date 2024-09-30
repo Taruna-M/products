@@ -53,7 +53,7 @@ const UpdateProduct = () => {
     }, {});
 
     try {
-      const token = localStorage.getItem('token');
+      const token = sessionStorage.getItem('token');
       const response = await axios.put(`https://products-api-production-f11a.up.railway.app/updateProd/${id}`, updatedData, {
         headers: {
           Authorization: `Bearer ${token}`, 
