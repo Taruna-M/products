@@ -34,7 +34,7 @@ const AddProduct = () => {
     const handleSubmit = async (e) => {
       e.preventDefault();
       try {
-        const token = localStorage.getItem('token'); 
+        const token = sessionStorage.getItem('token'); 
         const response = await axios.post('https://products-api-production-f11a.up.railway.app/addProd', formData, {
           headers: {
             Authorization: `Bearer ${token}`, 
